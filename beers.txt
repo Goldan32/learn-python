@@ -1,0 +1,4 @@
+Soproni IPA, 350, IPA
+Soproni Vilagos, 300, Cheap
+Staropramen, 400, Lager
+Flying Rabbit, 900, IPA
