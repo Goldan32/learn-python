@@ -67,7 +67,7 @@ python3 hello.py
 
 7. The program should print `Hello World!` to the Command Prompt.
 
-
+**This is where you should stop alone, and wait for a face to face course**
 
 ## First, let's just talk about programming
 This can't be done alone. Let's engage in a discussion about the following topics
@@ -254,7 +254,37 @@ if __name__ == "__main__":
 I'll think about if it's necessary to explain all parts of this, but use this structure please. It makes testing easier also if you make a `test()` function that you can run instead of `main()`.
 
 ## Complex data structures
+The basic types are great for describing one thing. But python is a very high level language and natively offers options to create different collections of the basic types. There are many more, but here we'll learn the 3 most important ones.
+
 ### List
+Lists are python's implementation of a standard array or vector. It's used the most in basic programs. A list stores elements in order, it is indexable, an element can occur multiple times and elements can be changed or modified. In short, a list is **ordered**, **changable** and **allows duplicates**.
+
+When to use a list? Lists have a variety of usecases. It's hard to demonstrate how useful they are without iterations, but here is how to handle them anyway.
+
+```python
+# Create an empty list
+people = []
+
+# or
+people = list()
+
+# Let's say a person is a string now
+person1 = "John"
+
+# Add these values to the list
+people.append(person1)
+people.append("Joe")
+
+print(people)
+
+people[1] = "Not Joe"
+print(people[1])
+```
+
+`append()` puts the value in its argument to the back of the list. `print()` can display a full list but in more of a debugging and not a nice format. A nice format will be shown when learning loops.
+
+It goes without saying, but the first element of a list is accessed with the index **0**. This means that the last index is one below the length of the list, which by the way can be accessed with the `len()` function. `len()` works on all iterable types, more on them later.
+
 ### Dictionary
 ### Tuple
 
