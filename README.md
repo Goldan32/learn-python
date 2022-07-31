@@ -287,10 +287,181 @@ print(people[1])
 It goes without saying, but the first element of a list is accessed with the index **0**. This means that the last index is one below the length of the list, which by the way can be accessed with the `len()` function. `len()` works on all iterable types, more on them later.
 
 ### Dictionary
-### Tuple
+A dictionary is a collection that can be used to store key-value pairs. It can also be refered to as an *associative array* but that can be confusing as dictionaries are **unordered**. However you can still iterate through them, it will be shown how later. The keys are unique, but two different keys can be paired with the same value.
 
+Using a dictionary is somewhat easier than using a list because of its unordered nature. The keys and the values can be of any type.
+
+```python
+# Create an empty dictionary
+translator = []
+
+# Add some items
+translator["apple"] = "alma"
+translator["pear"] = "korte"
+translator["throw"] = "dob"
+translator["drum"] = "dob"
+print(translator)
+
+# Change a value
+translator["apple"] = "iPhone gyarto ceg"
+print(translator)
+
+```
+So adding new reacords and changing existing ones is easy. How do you think a key can be changed instead of a value?
+### Tuple
+A tuple is a collection that is similar to a list as it's **ordered and duplicate items are allowed**, but these items **cannot be changed**. You will rarely define tuples but here is how to do it. As a tuple cannot be changed, you have to add all the items while defining it. Its members can be accessed by indexing.
+
+```python
+exam_subjects = ("maths", "hungarian", "history", "physics", "english")
+print(exam_subjects[2])
+```
+
+I know what you think. This is utterly useless, right? No, you couldn't be more wrong.
+
+Let's say we want to create a function that simulates the inverse of the absolute value mathematical function. A positive number can be the absolute value of the same number and the same number times -1. But a function can only return 1 value as we already know.
+
+This is where a tuples come in. From a function we can return an **unnamed tuple**, then at the place of the function call we can use **patter matching** to deconstruct that tuple into multiple variables.
+
+```python
+def inverse_abs(num):
+    return (num, num * -1)          # Unnamed tuple
+
+positive, negative = inverse_abs(5) # Pattern matching
+
+print(positive, negative)
+```
 ## Control flow
+And we are finally here. After this chapter, our programs will now longer execute one line after the other, but the next line will often be decided based on a value of a variable.
+
 ### if statement
+The if statement of if block is the simplest control flow structure. The if block gets executed if the expression in its header is true. Here comes in handy the boolean type. Every other type can be converted to boolean when it is in the header of an if block. We can invert a boolean with the `not` keyword.
+
+Let's see some examples
+
+```python
+num_t = 12
+num_f = 0
+
+string_t = "something"
+string_f = ""
+
+if num_t:
+    print("A number is true if it is not zero")
+
+if string_t:
+    print("A string is true if it is not empty")
+
+# Now make the false ones true by inverting them
+
+if not num_f:
+    print("Zero is false")
+
+if not string_f:
+    print("Empty string is false")
+```
+
+Not only a single variable can be converted to boolean type. The result of an operation can also be either true of false. Here are some examples.
+
+```python
+num1 = 23
+num2 = 20
+
+str1 = "apple"
+str2 = "pear"
+
+if str1 == "apple":
+    print("This is true")
+
+if str1 == str2:
+    print("This is false")
+
+if num1 == num2 + 3:
+    print("This is true")
+
+if num1 > num2:
+    print("This is true")
+
+if num1 >= num2:
+    print("This is true")
+
+# Check if a list contains a value
+available_foods = ["hamburger", "hot-dog", "pizza"]
+
+if "hamburger" in available_foods:
+    print("This is America")
+```
+
+If something is converted to a boolean, we can then use bool algebra on those values. Here is a reminder of basic bool algebra.
+
+```python
+t = True
+f = False
+
+t and f # False
+t and t # True
+f and f # False
+
+t or f # True
+t or t # True
+f or f # False
+
+# Practical example
+
+num1 = 11
+num2 = 5
+
+# Condition: num 1 is above 10 num2 is not zero
+# print "ok" if the condition is satisfied 
+if (num1 > 10) and num2:
+    print("ok")
+
+```
+> Remember: Always use parantheses to signal or set precedence in complicated expressions!
+
+So if the condition is true than the block gets executed and if it was false, nothing happened... so far. Here are some examples of the other branch of this expression.
+
+The `else` branch gets executed *instead of* the if branch when the condition is false.
+
+```python
+num1 = 22
+
+if num1 == 12:
+    print("num1 was 12")
+else
+    print("num1 was not 12")
+
+```
+What if there are more cases than true and false. Here are examples with `elif` branches. You can use however many of these branches. The last `else` block is **not** compulsory.
+
+```python
+animal = "cat"
+
+if animal == "dog":
+    print("You failed")
+elif animal == "cat":
+    print("Great choice")
+elif animal == "parakeet"
+    print("Not bad")
+else:
+    print("You've gone too far, go back to the cat")
+
+```
+It's inportant to note, that only the **first** block thats header is true will be executed.
+
+```python
+num = 11
+
+if num > 20:
+    print("Number greater than 20")
+elif num > 10:
+    print("Number greater than 10")
+elif num > 0:
+    print("Number greater than 0")
+elif num > -10:
+    print("Number greater than -10")
+
+```
+
 ### while loop
 ### for loop
 
