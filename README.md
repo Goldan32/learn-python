@@ -147,8 +147,8 @@ var_t = True
 But wait. How does python know that we're trying to make a boolian and not a string that contains `"False"`. We are certainly not telling it like for example in C++.
 ```cpp
 // NOT PYTHON CODE
-std::String = "False"
-std::bool = false;
+std::String str1 = "False"
+std::bool b1 = false;
 ```
 Contrary to this, python uses the **Duck Test** to determine the type of a variable.
 > If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck.
@@ -221,6 +221,7 @@ Another problem is: If a function can only work on copies of variables, how can 
 ```python
 def talking_duck(sentence: str) -> str:
     temp = sentence + " Quack."
+    return temp
 
 new_sentence = talking_duck("Hello World!")
 print(new_sentence)
