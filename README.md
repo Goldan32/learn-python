@@ -459,11 +459,96 @@ elif num > 0:
     print("Number greater than 0")
 elif num > -10:
     print("Number greater than -10")
+```
+### while loop
+Using an if statement is a one-time stop. The code in an if block either runs one time or zero times. With a while loop or while block we can run some code multiple times.
 
+```python
+x = 0
+while x < 10:
+    print(x)
+    x = x + 1
+```
+This code snippet will print the numbers 0 to 9. When the execution reaches the header of the while loop, it checks if the condition is true. If it is true, it executes the while block one time, but instead of continuing with the next line, the header of the while loop is evaluated once again. If it is still true, then the block of code is run again. This continues for all eternety.
+
+**Anything that can be written into the header of an if block can be written to the header of a while block.**
+
+Usually something happens inside the while block that changes whether the header will be true or false in the next round. In our example, we increment the x variable, so in the 11th loop, the header will be false. After this, the execution continues from the next line after the while block.
+
+Lets try out what happens when we forget about changing something to make the header false.
+
+```python
+x = 0
+while x < 10:
+    print("Programming is fun!")
 ```
 
-### while loop
+Here, we wanted to print a string 10 times, but forget about *loop variable*, so now our program will never exit this while loop, and will continue to print the given line until we stop it somehow.
+
+If our program gets stuck in an *infinite loop* we can stop it by focusing the command line where the program runs and pressing **Ctrl+C**. This keyboard action sends an event to the program which stops it immediately.
+
+Just to demonstrate some other useful usage of the while loop, here is a program that only stops running after the user can correctly spell *Mississippi*
+
+```python
+while input("Spell the name of that river: ") != "Mississippi":
+    print("Not good, try again!")
+
+print("Nice job")
+```
 ### for loop
+A for loop is similar to the while loop in the sense that it will be executed multiple times. However here there is no condition, this loop *iterates* through a collection starting with the first element and finishing with the last. After the last element, the program continues with the line after the for block.
+
+Here is the the first while loop example done with a for loop.
+
+```python
+for x in range(10):
+    print(x)
+```
+
+The header of a for loop starts with the the word for. After that we *create* a variable. This variable will be equal to the next element of the thing we are iterating through. So the first time we enter the for block, the loop variable will be equal to the first element of the thing we are iterating through.
+
+So what is this thing actually? The thing after the *in* word in the header can be anything *iterable*. Iterable things contain other things that are ordered. For example a list contains other types of variables in order, therefore it can be in the header of the for block. A dictionary does not contain an ordered set of items so by default it is not iterable.
+
+But what happens in the above example. The `range` function returns a list of numbers from zero to its argument minus one. So the above code is equivalent to this next one.
+
+```python
+for x in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
+    print(x)
+```
+
+So without further ado, here is how to print out the collections we learned so far, one element on one line.
+
+```python
+fruit_list = ["apple", "pear", "plum"]
+for fruit in fruit_list:
+    print(fruit)
+
+exam_subjects = ("maths", "hungarian", "history", "physics", "english")
+for subject in exam_subjects:
+    print(subject)
+
+friends_iq = {"Kiki": 69, "Soma": 2, "Dani": 9001}
+# The .keys() method returns a list with the keys from a dictionary
+for name in friends_iq.keys():
+    print(f"The iq of {name} is {friends_iq[name]}")
+```
+
+One other thing. Iterating through a list this way the values in the list cannot be changed. Let's say we have a list conatining numbers and we want to square each number. How can we do this with a for loop?
+
+```python
+numbers = [2, 4, 6, 8, 11]
+for num in numbers:
+    num = num ** 2
+
+print(numbers) # No change: [2, 4, 6, 8, 11]
+
+for index in range(len(numbers)):
+    numbers[index] = numbers[index] ** 2
+
+print(numbers) # Changed: [4, 16, 36, 64, 121]
+```
+
+The solution was to not iterate through the list itself, but figure out its length, and make a list of indexes. By accessing each element via indexing, we can change the value in the original list as shown previously.
 
 ## Classes
 ### Fields and Methods
