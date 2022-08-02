@@ -551,7 +551,92 @@ print(numbers) # Changed: [4, 16, 36, 64, 121]
 The solution was to not iterate through the list itself, but figure out its length, and make a list of indexes. By accessing each element via indexing, we can change the value in the original list as shown previously.
 
 ## Classes
+So far we learned how to define functions and create variables. First let's take a look at variables that 'belong together' by some human logic. These variables can be grouped together within a *class*. Let's create a a new class that can describe a student. We only have to store information about this student that will be relevant to our program. First we'll want to be able to store a unique id, a name, and a birth year of a student. Here is a class that fullfills these requirements.
+
+```python
+class Student:
+    name = ""
+    birth_year = 0
+    neptun = ""
+```
 ### Fields and Methods
+
+This is actually a correct class but pretty useless so far. A class is similar to a type, in the sense that a variables type can be `Student` in this case. The variables inside a class are called fields. But in this case these fields cannot be set when creating a new `Student` variable. For that, we will have to define a constructor inside the class definition.
+
+```python
+class Student:
+    __init__(self, n, b, i): # This is the constructor
+        self.name = n
+        self.birth_year = b
+        self.neptun = i
+
+elek = Student("Teszt Elek", 1999, "ASD123") # Here a variable of type Student is created
+```
+
+So lots of things happened here, let's unpack them in order. First line is the header of the class we are creating. Then in the next line, we create a function called the *contructor*. This functions will create the Student variable by assigning value to the class' fields. This function's first argument is `self` which refers to the instance of the class. This argument cannot be provided to the contructor it is automatic when creating a variable. The following arguments can be defined freely. Here we define 3 arguments, through which we can assign values to the 3 fields of this struct.
+
+Functions inside a class whose first argument is `self` are called methods, more on them later.
+
+First let's see how we can access the fields of a class. Assume the last block of code was run before this next one.
+
+```python
+print(elek.name)
+print(elek.birth_year)
+
+elek.name = "Teveg Elek"
+print(elek.name)
+```
+
+As we can see, `elek` is the name of the variable and its fields can be accessed with the `.` operator. We can print and also change these fields freely.
+
+What if we wanted to store some of these students results from some subjects. We can use a dictionary for this. We already know the 3 subjects we want to store the results of: maths, physics and programming, so we only need to pass a list of numbers to the constructor.
+
+```python
+class Student:
+    __init__(self, n, b, i, r: list):
+        self.name = n
+        self.birth_year = b
+        self.neptun = i
+        self.results = {"maths": r[0], "physics": r[1], "programming": r[2]}
+
+elek = Student("Teszt Elek", 1999, "ASD123", [2, 2, 5])
+
+# Print the results of elek
+for k in elek.results.keys():
+    print(f"{k}: {elek.results[k]}")
+```
+
+So methods have the self object as the first argument. Methods are functions that relate humanly to the class. Most of the time methods operate on the fields of a class. Let's write a method that returns a boolean, and can be used to determine if a sudent failed or passed (if all the results are above one the student passed). Then use this method to print some general information about elek.
+
+```python
+class Student:
+    def __init__(self, n, b, i, r: list):
+        self.name = n
+        self.birth_year = b
+        self.neptun = i
+        self.results = {"maths": r[0], "physics": r[1], "programming": r[2]}
+
+    def did_pass(self) -> bool:
+        ok = True
+        for subject in self.results.keys():
+            if self.results[subject] == 1:
+                ok = False
+        return ok
+
+elek = Student("Teszt Elek", 1999, "ASD123", [2, 2, 5])
+
+# Print general information about elek
+print(elek.name)
+print(elek.birth_year)
+print(elek.neptun)
+if elek.did_pass():
+    print("Passed all his/her/their classes")
+else:
+    print("Failed one or more class")
+```
+
+### str and repr methods, or how can I print my classes
+
 ### Importing libraries
 ### Writing your own classes
 ### Is everythings a class?
