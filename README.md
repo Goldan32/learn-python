@@ -636,6 +636,23 @@ else:
 ```
 
 ### str and repr methods, or how can I print my classes
+We may take it for granted that we can write everything inside the `print()` function, and it will be displayed, but that is not the case with classes we write. Not by default at least.
+
+We can write a special function for our class that will make it possible to print it like a number or a string. This function doesn't take parameters, only `self`, but returns a string which will be printed.
+
+Let's expand our class with this method. This method doesn't just make print usabel, but gives us a way to convert our class to a string. Make it so that the output will be "human readable".
+
+```python
+# ...
+    def __str__(self):
+        return f"{self.name} was born in {self.birth_year}, neptun code: {self.neptun}"
+# ...
+
+elek = Student("Teszt Elek", 1999, "ASD123", [2, 2, 5])
+print(elek)
+```
+
+As it can be seen, not all fields need to be in the final string that is returned.
 
 ### Importing libraries
 ### Writing your own classes
