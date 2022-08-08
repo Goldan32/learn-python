@@ -563,6 +563,8 @@ class Student:
 
 This is actually a correct class but pretty useless so far. A class is similar to a type, in the sense that a variables type can be `Student` in this case. The variables inside a class are called fields. But in this case these fields cannot be set when creating a new `Student` variable. For that, we will have to define a constructor inside the class definition.
 
+### Writing your own classes
+
 ```python
 class Student:
     __init__(self, n, b, i): # This is the constructor
@@ -655,12 +657,144 @@ print(elek)
 As it can be seen, not all fields need to be in the final string that is returned.
 
 ### Importing libraries
-### Writing your own classes
-### Is everythings a class?
+
+Some functionalities are not available in the basic package of python, but they also don't require any downloads. They can be imported into the project like this.
+
+```python
+from random import sample
+from random import randint
+
+# Print a random integer from 0 to 100
+print(randint(0, 100))
+
+# Print a random element from a list
+l = ["apple", "pear", "banana"]
+print(sample(l))
+```
+
+This way we only imported 2 functions, but we can also import the whole class.
+
+```python
+import random
+```
+
+### Is everything a class?
+No, but it's useful to think like this.
+
+On every variable you may be able to call methods, and every variable may have fields. Also functions may work on one type of variable and not on another one.
 
 ## File handling
-### Read
-### Write and Append
+Reading and writing files is the basic task of programming. Everything is stored in files, so in complex programs file handling can never be avoided.
+
+There are two types of files. **Text files** store information in a coded way, some common coding methods are ANSI or UTF-8. **Binary files** contain raw binary data as in zeros and ones. When opening a file, we can select which type of file to open our file as. After we are done, we also need to close the file.
+
+For now, we will assume that every file we open is an **ANSI coded text file** as they are the easiest to deal with.
+
+To read or write a file, we first need to open it with the `open()` function. This function has 2 arguments. The first is the path to the file we want to open, the second is a mode string. In the latter we can specify how we want to open a file.
+
+  - "r" - Read - No changes will be made to the file.
+  - "a" - Append - Writing will be appended to the end of the file if it exists. File will be created if not.
+  - "w" - Write - Writing will overwrite the existing contents of the file.
+
+### Read and Write
+
+The standard way to interact with files in python is as follows.
+
+1. Open the file for reading.
+2. Read its contents into an appropriate data structure.
+3. Close the file (for reading).
+4. Make changes to the contents of said data structure.
+5. Open the file for writing.
+6. Overwrite the file with the updated contents.
+7. Close the file (for writing).
+
+Let's write a simple program to demonstrate this. First we will create a file then modify it. The first step of the above list starts in the second code block.
+
+```python
+file_name = "example_file.txt"
+
+f = open(file_name, "w")
+f.write("Hello from the other file!")
+f.close()
+```
+
+The data structure in this case will be a string and the operation will be appending another sentence to it.
+
+```python
+file_name = "example_file.txt"
+
+f = open(file_name, "r")
+content = f.read()
+f.close()
+
+content = content + " Bye!"
+
+f = open(file_name, "w")
+f.write(content)
+f.close()
+```
+
+There is also a more correct way to do this. By using **with** blocks, we don't have to open or close files. They open at the start of the block and close at the end.
+
+```python
+file_name = "example_file.txt"
+content = ""
+
+with open(file_name, "r") as f:
+    content = f.read()
+
+content = content + " Bye!"
+
+with open(file_name, "w") as f:
+    f.write(content)
+```
+
+There are many more useful methods, but they can be learnt on your own.
+
+- **close():** Closes the file
+- **flush()**:	Flushes the internal buffer
+- **read()**:	Returns the file content
+- **readline()**: Returns one line from the file
+- **readlines()**:	Returns a list of lines from the file
+- **seek()**:	Change the file position
+- **tell()**:	Returns the current file position
+- **truncate()**:	Resizes the file to a specified size
+- **writable()**:	Returns whether the file can be written to or not
+- **write()**:	Writes the specified string to the file
+- **writelines()**:	Writes a list of strings to the file
+
+## Program arguments
+We drew parallels already between a program and a function. Well the same way a function can have arguments, a program can have too. Here is how to access these arguments on python.
+
+The arguments will be stored in a list called `sys.argv`.
+
+```python
+from sys import argv
+
+for a in argv:
+    print(a)
+```
+
+This program prints every argument in a new line. You can test it by running the program the usual way, but adding more words separated with spaces.
+
+```bash
+$ python hello.py apple testword "Hello World"
+```
+
+## Your first project
+In this part will be a description of a project which you should complete on your own.
+
+Task:
+
+A text file contains information about beers. Every line is a type of beer.
+Beers have a name, a price (integer), and a type. These informations are separated by commas.
 
 
+The program should be able to:
+  - Read in a file in the format specified above
+  - Provide an option to add a new beer
+  - *List all beers sorted by type or price
+  - Save newly added beers to the same file it read from
+  - Recommend a beer (print a random beer)
 
+A solution can be found in this repository, but I don't recommend looking at it without completing the task first on your own.
