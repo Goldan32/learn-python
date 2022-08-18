@@ -3,41 +3,7 @@
 # Python for ~~Dummies~~ Dumbasses
 Enjoy.
 
-1. [Getting Started](#getting-started)
-    1. [IDE or Editor](#ide-or-editor)
-    2. [Python interpreter](#python-interpreter)
-    3. [Creating your first project](#creating-your-first-project)
-2. [First let's just talk about programming](#first-let's-just-talk-about-programming)
-3. [Interpreted language](#interpreted-language)
-4. [Variables](#variables)
-    1. [Numbers](#numbers)
-        1. [Integers](#integers)
-        2. [Floats](#floats)
-    2. [Text](#text)
-    3. [Boolean](#boolean)
-5. [Printing](#printing)
-6. [Functions](#functions)
-    1. [Arguments](#arguments)
-    2. [Return values](#return-values)
-    3. [Standard program boilerplate](#standard-program-boilerplate)
-7. [Complex data structures](#complex-data-structures)
-    1. [List](#list)
-    2. [Dictionary](#dictionary)
-    3. [Tuple](#tuple)
-8. [Control flow](#control-flow)
-    1. [if statement](#if-statement)
-    2. [while loop](#while-loop)
-    3. [for loop](#for-loop)
-9. [Classes](#classes)
-    1. [Fields and Methods](#fields-and-methods)
-    2. [Writing your own classes](#writing-your-own-classes)
-    3. [str and repr methods or how can I print my classes](#str-and-repr-methods-or-how-can-i-print-my-classes)
-    4. [Importing libraries](#importing-libraries)
-    5. [Is everything a class?](#is-everything-a-class?)
-10. [File handling](#file-handling)
-    1. [Read and Write](#read-and-write)
-11. [Program arguments](#program-arguments)
-12. [Your first real project](#your-first-real-project)
+\\insert_toc\\
 
 ## Getting Started
 This chapter can be done on your own. It contains intstruction on stuff you need to download to get started.
