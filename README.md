@@ -329,7 +329,7 @@ Using a dictionary is somewhat easier than using a list because of its unordered
 
 ```python
 # Create an empty dictionary
-translator = []
+translator = {}
 
 # Add some items
 translator["apple"] = "alma"
